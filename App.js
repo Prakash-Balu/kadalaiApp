@@ -21,11 +21,11 @@ function ListHeaderComponent({ countries, lang, onPress }) {
       <Text>
         Popular countries
       </Text>
-      {/* {countries?.map((country, index) => {
+      {countries?.map((country, index) => {
               return (
-                  <CountryButton key={index} item={country} name={country?.name?.[lang || 'en']} onPress={() => onPress(country) />
+                  <CountryButton key={index} item={country} name={country?.name?.[lang || 'en']} onPress={() => onPress(country)} />
               )
-          })} */}
+          })}
     </View>
   )
 }
