@@ -9,7 +9,7 @@ function CountryListComp({countries, lang, onPress}) {
             }}
         >
             <Text>
-                Popular countries
+                Popular countries1
             </Text>
             {/* {countries?.map((country, index) => {
                 return (
