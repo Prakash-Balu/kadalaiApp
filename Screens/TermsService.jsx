@@ -80,9 +80,8 @@ export default function TermsService() {
                 You should also tailor your privacy policy to the specific features and functionality of your chat application. For example, if your chat application offers end-to-end encryption, you should explain how this encryption works and how it protects user privacy.<br></br>
                 
             </Text>
-            <Button onPress={() =>  navigation.navigate('StartPage')} value="Continue">
-                Continue
-            </Button >
+            <Button title="Continue" onPress={() =>  navigation.navigate('StartPage')} value="Continue" />
+               
         </ScrollView>
     );
 }
