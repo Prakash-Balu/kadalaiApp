@@ -12,13 +12,21 @@ import { CountryPicker, CountryButton } from "react-native-country-codes-picker"
 // import {CountryList} from "react-native-country-codes-picker";
 const image = require('../assets/logoKApp.png');
 
-export default function StartPage({navigation}) {
+export default function StartPage({ navigation }) {
   const [show, setShow] = useState(false);
   const [countryCode, setCountryCode] = useState('+91');
+  const [phoneNo, setPhoneNo] = useState("");
 
 
   const handleChange = (event) => {
     setCountryCode(event.target.value);
+  };
+
+  const handlePhoneNo = (event) => {
+
+    // Allow only numbers 
+    const numericValue = event.target.value.replace(/[^0-9]/g, "");
+    setPhoneNo(numericValue);
   };
   return (
     <View style={styles.container}>
@@ -42,16 +50,16 @@ export default function StartPage({navigation}) {
             // backgroundColor: 'grey',
             padding: 10,
             borderBottomWidth: 1,
-            borderBottomStyle : 'solid',
-            borderBottomColor : '#0000006b',
+            borderBottomStyle: 'solid',
+            borderBottomColor: '#0000006b',
           }}
-          
+
         >
           <Text style={{
             color: 'black',
             fontSize: 11
           }}
-          startIcon={<ArrowDropDownIcon />}
+            startIcon={<ArrowDropDownIcon />}
           >
             {countryCode}
           </Text>
@@ -64,18 +72,24 @@ export default function StartPage({navigation}) {
             setCountryCode(item.dial_code);
             setShow(false);
           }}
-          
-          
+
+
           popularCountries={['en', 'ua', 'pl']}
         />
 
         <TextField
-          id="standard-basic"
           style={styles.TextInput2}
-          label="Enter Number"
-          variant="standard" />
+          id="standard-basic"
+          variant="standard"
+          onChange={handlePhoneNo}
+          value={phoneNo}
+          inputProps={{ maxLength: 10 }}
+          keyboardType="numeric"
+          placeholder="Enter number"
+          placeholderTextColor="#999"
+        />
 
-{/* <Select
+        {/* <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           value={countryCode}
@@ -99,9 +113,9 @@ export default function StartPage({navigation}) {
 
 
       <View >
-        <Text style={styles.Text2}> Read and accept the KadalaiApp 
+        <Text style={styles.Text2}> Read and accept the KadalaiApp
           <Text style={{ color: 'blue' }}
-            onPress={() =>  navigation.navigate('TermsService')}>
+            onPress={() => navigation.navigate('TermsService')}>
             &nbsp;Terms of Service and Privacy Policy
           </Text>
         </Text>
@@ -163,7 +177,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     position: 'absolute',
     left: 75,
-    marginTop: -10,
+    marginTop: 8,
   },
   SubmitBtn: {
     position: 'absolute',
