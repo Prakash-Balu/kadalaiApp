@@ -1,12 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Button } from 'react-native';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import CloseIcon from '@mui/icons-material/Close';
 
-
-
-export default function TermsService() {
+export default function TermsService({navigation}) {
     return (
+
         <ScrollView style={styles.container}>
-            <Text style={{ fontWeight: "bold", fontColor: "black" }}>
+
+            <CloseIcon style={{
+                position: "fixed",
+            right: "10px",
+            cursor: "pointer",
+            marginTop : "10px",
+            }}
+            onClick={() => navigation.goBack()}
+            />
+    
+            <Text style={{ fontWeight: "bold", fontColor: "black", marginTop : "10px", }}>
                 Terms Of Service<br></br>
                 <br></br>
             </Text>
@@ -77,11 +90,13 @@ export default function TermsService() {
                 Handling of chat content: You should explain how you handle the content of user chats, such as whether you store or monitor chat content, and whether you disclose chat content to third parties.<br></br>
                 Data retention: You should explain how long you retain user data, and how users can request that their data be deleted.
                 Children's privacy: If your chat application is intended for use by children, you should explain how you comply with applicable children's privacy laws and regulations.
-                You should also tailor your privacy policy to the specific features and functionality of your chat application. For example, if your chat application offers end-to-end encryption, you should explain how this encryption works and how it protects user privacy.<br></br>
-                
+                You should also tailor your privacy policy to the specific features and functionality of your chat application. For example, if your chat application offers end-to-end encryption, you should explain how this encryption works and how it protects user privacy.
             </Text>
-            <Button title="Continue" onPress={() =>  navigation.navigate('StartPage')} value="Continue" />
-               
+            <br></br>
+            <FormControlLabel control={<Checkbox />} label="By using the kadalaiapp, you acknowledge that you have read and agreed to these terms and conditions." />
+            <br></br>
+            <Button title="Continue" onPress={() => navigation.goBack()} value="Continue" />
+            <br></br>
         </ScrollView>
     );
 }

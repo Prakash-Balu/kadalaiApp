@@ -11,24 +11,6 @@ import Select from '@mui/material/Select';
 import { CountryPicker, CountryButton } from "react-native-country-codes-picker";
 // import {CountryList} from "react-native-country-codes-picker";
 const image = require('../assets/logoKApp.png');
-function ListHeaderComponent({ countries, lang, onPress }) {
-  return (
-    <View
-      style={{
-        paddingBottom: 20,
-      }}
-    >
-      <Text>
-        Popular countries
-      </Text>
-      {countries?.map((country, index) => {
-              return (
-                  <CountryButton key={index} item={country} name={country?.name?.[lang || 'en']} onPress={() => onPress(country)} />
-              )
-          })}
-    </View>
-  )
-}
 
 export default function StartPage({navigation}) {
   const [show, setShow] = useState(false);
@@ -83,7 +65,7 @@ export default function StartPage({navigation}) {
             setShow(false);
           }}
           
-          ListHeaderComponent={ListHeaderComponent}
+          
           popularCountries={['en', 'ua', 'pl']}
         />
 
@@ -144,7 +126,7 @@ const styles = StyleSheet.create({
     paddingRight: '32px',
     paddingLeft: '32px',
     // marginTop: '10px',
-    // marginBottom: '60px',
+    // marginBottom: '0',
     marginRight: 'auto',
     marginLeft: 'auto'
   },
@@ -188,8 +170,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   Text2: {
-    marginTop: 81.44,
-    marginBottom: 139,
+    marginTop: 70,
     textAlign: 'center',
   },
 });
