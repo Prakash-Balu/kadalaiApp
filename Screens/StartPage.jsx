@@ -84,9 +84,8 @@ export default function StartPage({ navigation }) {
           onChange={handlePhoneNo}
           value={phoneNo}
           inputProps={{ maxLength: 10 }}
-          keyboardType="numeric"
+          // keyboardType="numeric"
           placeholder="Enter number"
-          placeholderTextColor="#999"
         />
 
         {/* <Select
