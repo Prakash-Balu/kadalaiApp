@@ -5,7 +5,6 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import CloseIcon from '@mui/icons-material/Close';
-import StartPage from './StartPage';
 
 export default function TermsService({navigation}) {
     //to verify the check box

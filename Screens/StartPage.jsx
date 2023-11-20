@@ -65,7 +65,7 @@ export default function StartPage({ navigation,route }) {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.loginHeader}>welcome to kadalaiapp</Text>
+      <Text style={styles.loginHeader}>Welcome to KadalaiApp</Text>
       <View style={styles.logoImg}>
         <Image source={image} style={{ width: 100, height: 100 }} />
       </View>
@@ -160,7 +160,7 @@ export default function StartPage({ navigation,route }) {
             </view>
         <Text style={styles.Text2}> Read and accept the KadalaiApp
           <Text style={{ color: 'blue' }}
-            onPress={() => navigation.navigate('TermsService',{name:"parent"})}>
+            onPress={() => navigation.navigate('TermsService')}>
             &nbsp;Terms of Service and Privacy Policy
           </Text>
           
