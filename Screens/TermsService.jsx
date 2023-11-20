@@ -1,13 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, Button } from 'react-native';
+import {useState} from 'react';
+import { ScrollView, StyleSheet, Text, View, Button, } from 'react-native';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import CloseIcon from '@mui/icons-material/Close';
+import StartPage from './StartPage';
 
 export default function TermsService({navigation}) {
-    return (
+    //to verify the check box
+    const [isVerify,setIsVerify]=useState(false)
+    // set the error based on check box
+    const [error,setError]=useState("")
 
+    const handleChange=(e)=>{
+         const value=e.target.value
+       
+        setIsVerify((value)=>(!value))
+        
+        
+        if(!e.target.value){
+            setError("please read and accept the terms and conditions");
+        }else{
+            setError("")
+        }
+        
+        
+    }
+
+    const handleSubmit=()=>{
+        if(!isVerify){ 
+            setError("please read and accept the terms and conditions") 
+        }
+        else{
+            
+            navigation.navigate('StartupPage' , { isVariableTrue: "true" , error:"" })
+            
+            setError("")
+        }
+       
+
+    }
+    
+    return (
+            
+       
         <ScrollView style={styles.container}>
 
             <CloseIcon style={{
@@ -93,10 +130,19 @@ export default function TermsService({navigation}) {
                 You should also tailor your privacy policy to the specific features and functionality of your chat application. For example, if your chat application offers end-to-end encryption, you should explain how this encryption works and how it protects user privacy.
             </Text>
             <br></br>
-            <FormControlLabel control={<Checkbox />} label="By using the kadalaiapp, you acknowledge that you have read and agreed to these terms and conditions." />
+            
+            <FormControlLabel control={<Checkbox />} onChange={handleChange}
+            label="By using the kadalaiapp, you acknowledge that you have read and agreed to these terms and conditions." />
             <br></br>
-            <Button title="Continue" onPress={() => navigation.goBack()} value="Continue" />
+            <view>
+                <text style={{color:"red"}}>
+                    {error ? <span>{error}</span>:""}
+                </text>
+            </view>
+            <Button title="Continue" onPress={handleSubmit} value="Continue" />
             <br></br>
+            
+           
         </ScrollView>
     );
 }
