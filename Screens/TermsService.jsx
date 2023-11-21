@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import {useState} from 'react';
-import { ScrollView, StyleSheet, Text, View, Button, } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Button } from 'react-native';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -55,7 +55,7 @@ export default function TermsService({navigation}) {
             onClick={() => navigation.goBack()}
             />
     
-            <Text style={{ fontWeight: "bold", fontColor: "black", marginTop : "10px", }}>
+            <Text style={{ fontWeight: "bold", fontColor: "black", marginTop : "10px" }}>
                 Terms Of Service<br></br>
                 <br></br>
             </Text>

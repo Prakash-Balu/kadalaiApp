@@ -1,14 +1,6 @@
 // import { StatusBar } from 'expo-status-bar';
 import { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  TouchableOpacity,
-  Linking,
-} from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Linking } from "react-native";
 import Button from "@mui/material/Button";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
