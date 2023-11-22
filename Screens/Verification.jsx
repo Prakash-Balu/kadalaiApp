@@ -30,13 +30,11 @@ export default function Verififcation({ navigation }) {
         <Text style={styles.Timer}>02.29</Text>
       </View>
       <View style={styles.Button1}>
-      <Button  
-        title='Verify OTP'
-        color="lightgrey"
-        borderRadius="15"
-        marginRight="5"
-        
-
+        <Button
+          title='Verify OTP'
+          color='lightgrey'
+          borderRadius='15'
+          marginRight='5'
         />
       </View>
     </View>
@@ -125,13 +123,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   Button1: {
-    borderRadius:5,
-    marginTop:80,
+    borderRadius: 5,
+    marginTop: 80,
     padding: 80,
-    height:55,
-    width:368,
-    length:4,
-    Color:"black",
+    height: 55,
+    width: 368,
+    length: 4,
 
-  }
+    Color: "black",
+  },
 });
