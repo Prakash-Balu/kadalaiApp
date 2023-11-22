@@ -81,6 +81,7 @@ export default function StartPage({ navigation, route }) {
           the verification code.
         </Text>
       </View>
+      
       <View style={styles.TextInput1}>
         <TouchableOpacity
           onPress={() => setShow(true)}
