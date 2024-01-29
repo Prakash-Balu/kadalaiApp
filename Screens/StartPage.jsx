@@ -79,9 +79,9 @@ export default function StartPage({ navigation, route }) {
       <TouchableOpacity
           onPress={() => setShow(true)}
           style={{
-            width: "10%",
+            width: "13%",
             position: 'absolute',
-            marginLeft:-10,
+            marginLeft:-20,
             height: 20,
             // backgroundColor: 'grey',
             // padding: 5,
@@ -104,7 +104,7 @@ export default function StartPage({ navigation, route }) {
             
             {countryCode}
           </Text>
-          <Icon type="font-awesome" style={styles.icon} name="caret-down" size={20} color="#000"/>
+          <Icon type="font-awesome-5" style={styles.icon} name="caret-down" size={20} color="#1B7DA4"/>
             
         </TouchableOpacity>
 
@@ -127,7 +127,7 @@ export default function StartPage({ navigation, route }) {
         onChangeText={(text) => handlePhoneNo(text)}
         autoCapitalize={"none"}
       />
-        
+        <Icon type="font-awesome-5" style={styles.icon2} name="arrow-circle-right" size={20} color="#000"/>
       </View>
       </>
     </SafeAreaView>
@@ -170,7 +170,10 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'relative',
     marginLeft: 40,
-    marginTop: -6,
+    marginTop: -8,
+    borderBottomWidth: 1,
+            
+            borderBottomColor: "#0000006b",
   },
   TextInput2: {
     height: 40,
@@ -182,6 +185,13 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   icon: {
-    marginLeft: 25,
+    marginLeft: 30,
+    marginTop: -2,
+  },
+  icon2: {
+    position: 'relative',
+    zIndex:999,
+    marginLeft: 200,
+    marginTop: -10,
   }
 });
