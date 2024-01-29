@@ -15,22 +15,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.prakashtech08.kadalaiapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.prakashtech08.kadalaiapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "931f2a01-7842-4255-a295-5933546842e8"
+        "projectId": "e094962c-21da-4956-9b2b-52cac6a6b1fe"
       }
     },
-    "owner": "prakashb08"
+    "owner": "prakashtech08"
   }
 }
