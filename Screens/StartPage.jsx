@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Linking, ScrollView, SafeAreaView } from "react-native";
 import Button from "@mui/material/Button";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { Icon } from '@rneui/themed';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
@@ -73,39 +74,43 @@ export default function StartPage({ navigation, route }) {
       </View>
       <View style={{flex:0.2 }}>
         
-        <Text
-            style={{
-              color: "black",
-              fontSize: 11,
-              position:'absolute',
-              marginLeft:-20,
-            }}
-            startIcon={<ArrowDropDownIcon />}
-          >
-            {countryCode}
-          </Text>
         
-      {/* <TouchableOpacity
+        
+      <TouchableOpacity
           onPress={() => setShow(true)}
           style={{
-            width: "15%",
-            // position: 'relative',
-            
-            height: 40,
+            width: "10%",
+            position: 'absolute',
+            marginLeft:-10,
+            height: 20,
             // backgroundColor: 'grey',
-            padding: 10,
+            // padding: 5,
             borderBottomWidth: 1,
             borderBottomStyle: "solid",
             borderBottomColor: "#0000006b",
           }}
-        > */}
           
+        >
           
-        {/* </TouchableOpacity> */}
+          <Text
+            style={{
+              color: "black",
+              fontSize: 11,
+              position:'absolute',
+              
+            }}
+            
+          >
+            
+            {countryCode}
+          </Text>
+          <Icon type="font-awesome" style={styles.icon} name="caret-down" size={20} color="#000"/>
+            
+        </TouchableOpacity>
 
         {/* For showing picker just put show state to show prop */}
 
-        {/* <CountryPicker
+        <CountryPicker
           show={show}
           // when picker button press you will get the country object with dial code
           pickerButtonOnPress={(item) => {
@@ -113,7 +118,7 @@ export default function StartPage({ navigation, route }) {
             setShow(false);
           }}
           popularCountries={["en", "ua", "pl"]}
-        /> */}
+        />
         
 <TextInput
         style={styles.TextInput1}
@@ -164,9 +169,8 @@ const styles = StyleSheet.create({
   TextInput1: {
     width: '100%',
     position: 'relative',
-    marginLeft: 140,
-    // marginTop: 72,
-    // textAlign: "center",
+    marginLeft: 40,
+    marginTop: -6,
   },
   TextInput2: {
     height: 40,
@@ -177,4 +181,7 @@ const styles = StyleSheet.create({
     left: 75,
     marginTop: 8,
   },
+  icon: {
+    marginLeft: 25,
+  }
 });
