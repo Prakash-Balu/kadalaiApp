@@ -1,9 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Linking, ScrollView, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Linking } from "react-native";
 import Button from "@mui/material/Button";
-import { Icon } from '@rneui/themed';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowCircleRightRoundedIcon from "@mui/icons-material/ArrowCircleRightRounded";
 import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
@@ -25,7 +24,6 @@ export default function StartPage({ navigation, route }) {
   //set error message for navigation to Verification page
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  
   //used to erase the error message after accept the terms and condition
   useEffect(() => {
     if (route.params?.error === "") {
@@ -52,62 +50,53 @@ export default function StartPage({ navigation, route }) {
     setCountryCode(event.target.value);
   };
 
-  const handlePhoneNo = (text) => {
+  const handlePhoneNo = (event) => {
     // Allow only numbers
-    const numericValue = text.replace(/[^0-9]/g, "");
+    const numericValue = event.target.value.replace(/[^0-9]/g, "");
     setPhoneNo(numericValue);
   };
 
   return (
-    <>
-    <StatusBar />
-    <SafeAreaView style={styles.container}>
-      <>
-      <View style={{flex: 0.5, justifyContent:'space-evenly'}}>
+    <View style={styles.container}>
       <Text style={styles.loginHeader}>Welcome to KadalaiApp</Text>
-      <Image source={image} style={styles.logoImg} />
-      <Text style={styles.RegNum}> Register Your Number </Text>
-      <Text style={styles.Text1}>
+      <View style={styles.logoImg}>
+        <Image source={image} style={{ width: 100, height: 100 }} />
+      </View>
+
+      <View>
+        <Text style={styles.RegNum}> Register Your Number </Text>
+      </View>
+      <View>
+        <Text style={styles.Text1}>
+          {" "}
           Please choose your country code and enter your mobile number to get
           the verification code.
         </Text>
       </View>
-      <View style={{flex:0.2 }}>
-        
-        
-        
-      <TouchableOpacity
+      
+      <View style={styles.TextInput1}>
+        <TouchableOpacity
           onPress={() => setShow(true)}
           style={{
-            width: "13%",
-            position: 'absolute',
-            marginLeft:-20,
-            height: 20,
+            width: "15%",
+            height: 40,
             // backgroundColor: 'grey',
-            // padding: 5,
+            padding: 10,
             borderBottomWidth: 1,
             borderBottomStyle: "solid",
             borderBottomColor: "#0000006b",
           }}
-          
         >
-          
           <Text
             style={{
               color: "black",
               fontSize: 11,
-              position:'absolute',
-              
             }}
-            
+            startIcon={<ArrowDropDownIcon />}
           >
-            
             {countryCode}
           </Text>
-          <Icon type="font-awesome-5" style={styles.icon} name="caret-down" size={20} color="#1B7DA4"/>
-            
         </TouchableOpacity>
-
         {/* For showing picker just put show state to show prop */}
 
         <CountryPicker
@@ -119,32 +108,84 @@ export default function StartPage({ navigation, route }) {
           }}
           popularCountries={["en", "ua", "pl"]}
         />
-        
-<TextInput
-        style={styles.TextInput1}
-        value={phoneNo}
-        placeholder={"Enter Mobile Number"}
-        onChangeText={(text) => handlePhoneNo(text)}
-        autoCapitalize={"none"}
-      />
-        <Icon type="font-awesome-5" style={styles.icon2} name="arrow-circle-right" size={20} color="#000"/>
+
+        <TextField
+          style={styles.TextInput2}
+          id='standard-basic'
+          variant='standard'
+          onChange={handlePhoneNo}
+          value={phoneNo}
+          inputProps={{ maxLength: 10 }}
+          // keyboardType="numeric"
+          placeholder='Enter number'
+        />
+
+        {/* <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={countryCode}
+          onChange={handleChange}
+          label="Age"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select> */}
+
+        <ArrowCircleRightRoundedIcon
+          onClick={onVerification}
+          style={styles.SubmitBtn}
+          color='primary'
+          fontSize='large'
+        ></ArrowCircleRightRoundedIcon>
+        <br />
+        <View>
+          <text style={{ color: "red" }}>
+            {error ? <span>{error}</span> : ""}
+          </text>
+        </View>
+        <View>
+          <text style={{ color: "green" }}>
+            {successMessage ? <span>{successMessage}</span> : ""}
+          </text>
+        </View>
+        <Text style={styles.Text2}>
+          {" "}
+          Read and accept the KadalaiApp
+          <Text
+            style={{ color: "blue" }}
+            onPress={() => navigation.navigate("TermsService")}
+          >
+            &nbsp;Terms of Service and Privacy Policy
+          </Text>
+        </Text>
       </View>
-      </>
-    </SafeAreaView>
-  </>
+    </View>
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "space-evenly",
+    // backgroundColor: 'aqua',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    borderWidth: 2,
+    // borderColor: 'red',
+    fontWeight: "bold",
+    maxWidth: "390px",
+    paddingRight: "32px",
+    paddingLeft: "32px",
+    // marginTop: '10px',
+    // marginBottom: '0',
+    marginRight: "auto",
+    marginLeft: "auto",
   },
   loginHeader: {
-    fontSize: 20,
     marginTop: "70px",
     fontWeight: "bold",
     textAlign: "center",
@@ -153,8 +194,6 @@ const styles = StyleSheet.create({
   logoImg: {
     marginTop: "27px",
     alignSelf: "center",
-    width: 100,
-    height: 100,
   },
   RegNum: {
     marginTop: "30px",
@@ -167,31 +206,24 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   TextInput1: {
-    width: '100%',
-    position: 'relative',
-    marginLeft: 40,
-    marginTop: -8,
-    borderBottomWidth: 1,
-            
-            borderBottomColor: "#0000006b",
+    marginTop: 72,
+    textAlign: "center",
   },
   TextInput2: {
     height: 40,
-    borderColor: "grey",
+    borderColor: "gray",
     borderWidth: 1,
     marginBottom: 20,
     position: "absolute",
     left: 75,
     marginTop: 8,
   },
-  icon: {
-    marginLeft: 30,
-    marginTop: -2,
+  SubmitBtn: {
+    position: "absolute",
+    right: 0,
   },
-  icon2: {
-    position: 'relative',
-    zIndex:999,
-    marginLeft: 200,
-    marginTop: -10,
-  }
+  Text2: {
+    marginTop: 70,
+    textAlign: "center",
+  },
 });
